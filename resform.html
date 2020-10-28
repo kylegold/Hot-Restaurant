@@ -46,8 +46,8 @@
               </div>
 
               <div class="form-group">
-                <label for="unique-id">Unique Id</label>
-                <input type="text" class="form-control" id="unique-id">
+                <label for="id">Unique Id</label>
+                <input type="text" class="form-control" id="id">
               </div>
 
             </form>
@@ -69,8 +69,8 @@
       var newReservation = {
         name: $("#name").val().trim(),
         role: $("#phone").val().trim(),
-        age: $("#email").val().trim(),
-        forcePoints: $("#unique-id").val().trim()
+        email: $("#email").val().trim(),
+        id: $("#id").val().trim()
       };
 
       // Question: What does this code do??
