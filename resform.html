@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Make a Reservation</title>
+  <title>Restaurant</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -68,8 +68,8 @@
               </div>
 
               <div class="form-group">
-                <label for="id">Unique Id</label>
-                <input type="text" class="form-control" id="id">
+                <label for="note">Note</label>
+                <input type="text" class="form-control" id="force-points">
               </div>
 
             </form>
@@ -90,9 +90,9 @@
       event.preventDefault();
       var newCharacter = {
         name: $("#name").val().trim(),
-        role: $("#phone").val().trim(),
-        email: $("#email").val().trim(),
-        id: $("#id").val().trim()
+        role: $("#time").val().trim(),
+        age: $("#number").val().trim(),
+        forcePoints: $("#note").val().trim()
       };
 
       // Question: What does this code do??
