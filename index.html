@@ -25,33 +25,25 @@
           alt="Restaurant"
         />
       <h1>Hot Restaurant</h1>
-      <h3>We only have ${tablesRemaining} tables remaining</h3>
+      <h3 id='tables'>We only have (<span id="tablesRemaining"></span>) remaining</h3>
+
       <hr>
       <a href="/reservations"><button class="btn btn-danger btn-lg"><i class="fas fa-cocktail"></i> View Tables</button></a>
       <a href="resform.html"><button class="btn btn-danger btn-lg"><i class="fas fa-utensils"></i></span> Make a Reservation</button></a>
     </div>
     <div class="row">
 
-     
-  <script type="text/javascript">
-    // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
-      event.preventDefault();
-      var newCharacter = {
-        name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
-      };
-
-      // Question: What does this code do??
-      $.post("/api/characters", newCharacter)
-        .then(function(data) {
-          console.log("add.html", data);
-          alert("Adding character...");
-        });
-    });
-  </script>
+     <script>
+       $.get("/api/reservations/", function(data) {
+      if((5 - data.length) === 1) {
+        $('#tablesRemaining').text(`1 table`) 
+      }
+      else{
+        $('#tablesRemaining').text((5 - data.length) + " tables")
+      } 
+      })
+     </script>
+  
 
 </body>
 </html>
