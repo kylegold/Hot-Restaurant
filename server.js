@@ -19,32 +19,21 @@ const reservations = [
     name: "kyle test",
     phone: 5550005555,
     email: 'kyle@test.com',
-    id: 0,
+    id: 1,
   },
   {
     name: "kyle firth test",
     phone: 5550005555,
     email: 'kyle@test.com',
-    id: 0,
+    id: 2,
   },
   {
     name: "second test",
     phone: 5550005555,
     email: 'kyle@test.com',
-    id: 0,
+    id: 3,
   },
-  {
-    name: "third test",
-    phone: 5550005555,
-    email: 'kyle@test.com',
-    id: 0,
-  },
-  {
-    name: "fourth test",
-    phone: 5550005555,
-    email: 'kyle@test.com',
-    id: 0,
-  }
+
 ]
 
 const waitlist = [
@@ -52,7 +41,7 @@ const waitlist = [
     name: "waitlist test",
     phone: 5550005555,
     email: 'kyle@test.com',
-    id: 0,
+    id: 1,
   }
 ]
 
@@ -89,13 +78,19 @@ app.get('/api/waitlist', (req, res) => {
 app.post('/api/reservations', (req, res) => {
   const newReservation = req.body
 
-  if (reservations.length > 5) {
+  if (reservations.length >= 5) {
     waitlist.push(newReservation)
   }
   else {
     reservations.push(newReservation)
   }
 })
+
+//clear form (not finished) 
+// app.post("/api/clear", (req, res) => {
+//   tableData.length = 0
+//   waitlistData.length = 0
+// })
 
 // Starts the server to begin listening
 // =============================================================

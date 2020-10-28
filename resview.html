@@ -34,15 +34,10 @@
           <div class="card-header">
             <h3><strong>Current Reservations</strong></h3>
           </div>
-          <div class="card-body">
-            <input type="text" id="character-search" class="form-control">
+          <div class="card-body" id="reservationBody">
+            
             <br>
-            <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span
-                  class="fa fa-search"></span> Search
-                Your Feelings. You know it is true.</button>
-
-            </div>
+            
           </div>
         </div>
 
@@ -50,13 +45,9 @@
           <div class="card-header">
             <h3><strong>Waitlist</strong></h3>
           </div>
-          <div class="card-body">
-            <h2 id="name">Yoda</h2>
-            <div id="stats">
-              <h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-              <h3><strong>Age:</strong> <span id="age">900</span></h3>
-              <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
-            </div>
+          <div class="card-body" id="waitlistBody">
+            
+            
           </div>
         </div>
       </div>
@@ -64,28 +55,85 @@
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
-      var searchedCharacter = $("#character-search").val().trim();
+    
 
       // Using a RegEx Pattern to remove spaces from searchedCharacter
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+      
 
-      $.get("/api/reservations/" + searchedCharacter, function(data) {
+      $.get("/api/reservations/", function(data) {
         console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
-        } else {
-          $("#name").text(
-            "The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
+        //   $("#stats").show();
+        data.forEach(tableRes => {
+
+            // header
+        var headingElement = document.createElement('h2')
+        var resHead = headingElement.text = ('Reservation')
+        $('#reservationBody').append(resHead + '<br>')
+            // name
+         var nameElement = document.createElement('h3')
+         var tableName = nameElement.text = (tableRes.name);
+         $('#reservationBody').append(tableName + '<br>')
+            // email
+         var emailElement = document.createElement('h3')
+         var tableEmail = emailElement.text = (tableRes.email);
+         $('#reservationBody').append(tableEmail + '<br>')
+            // phone
+         var phoneElement = document.createElement('h3')
+         var tablePhone = nameElement.text = (tableRes.phone);
+         $('#reservationBody').append(tablePhone + '<br>')
+
+            // id
+         var idElement = document.createElement('h3')
+         var tableId = idElement.text = (tableRes.id);
+         $('#reservationBody').append(tableId + '<br>')
+
+         // break
+        var breakElement = document.createElement('br')
+        $('#reservationBody').append(breakElement)
+        //   console.log(tableRes)
+        //   console.log(tableRes.name)
+        })
+
+        
       });
-    });
+
+      $.get("/api/waitlist/", function(data) {
+        console.log(data);
+        //   $("#stats").show();
+        data.forEach(tableRes => {
+
+        // header
+        var headingElement = document.createElement('h2')
+        var resHead = headingElement.text = ('Reservation')
+        $('#waitlistBody').append(resHead + '<br>')
+            // name
+         var nameElement = document.createElement('h3')
+         var tableName = nameElement.text = (tableRes.name);
+         $('#waitlistBody').append(tableName + '<br>')
+            // email
+         var emailElement = document.createElement('h3')
+         var tableEmail = emailElement.text = (tableRes.email);
+         $('#waitlistBody').append(tableEmail + '<br>')
+            // phone
+         var phoneElement = document.createElement('h3')
+         var tablePhone = nameElement.text = (tableRes.phone);
+         $('#waitlistBody').append(tablePhone + '<br>')
+
+            // id
+         var idElement = document.createElement('h3')
+         var tableId = idElement.text = (tableRes.id);
+         $('#waitlistBody').append(tableId + '<br>')
+
+           // break
+        var breakElement = document.createElement('br')
+        $('#waitlistBody').append(breakElement)
+        //   console.log(tableRes)
+        //   console.log(tableRes.name)
+        })
+
+        
+      });
 
   </script>
 </body>
